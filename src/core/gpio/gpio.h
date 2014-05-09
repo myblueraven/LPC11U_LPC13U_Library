@@ -56,6 +56,9 @@ extern "C" {
 #define GROUP0          (0)
 #define GROUP1          (1)
 
+#define GPIO_DIRECTION_IN (0)
+#define GPIO_DIRECTION_OUT (1)
+
 void     gpioInit ( void );
 void     gpioSetPinInterrupt ( uint32_t channelNum, uint32_t portNum, uint32_t bitPosi, uint32_t sense, uint32_t event );
 void     gpioPinIntEnable ( uint32_t channelNum, uint32_t event );
