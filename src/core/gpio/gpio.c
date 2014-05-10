@@ -518,7 +518,7 @@ uint32_t gpioGetPinValue( uint32_t portNum, uint32_t bitPosi )
                 1 to set the pin high, 0 to set it low
 */
 /**************************************************************************/
-void gpioSetBitValue( uint32_t portNum, uint32_t bitPosi, uint32_t bitVal )
+void gpioSetPinValue( uint32_t portNum, uint32_t bitPosi, uint32_t bitVal )
 {
   if ( bitVal )
   {

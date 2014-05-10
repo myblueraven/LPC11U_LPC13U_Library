@@ -67,7 +67,7 @@ uint32_t  gpioPinIntStatus ( uint32_t channelNum );
 void     gpioPinIntClear ( uint32_t channelNum );
 void     gpioSetGroupedInterrupt ( uint32_t groupNum, uint32_t *bitPattern, uint32_t logic, uint32_t sense, uint32_t *eventPattern );
 uint32_t  gpioGetPinValue ( uint32_t portNum, uint32_t bitPosi );
-void     gpioSetBitValue ( uint32_t portNum, uint32_t bitPosi, uint32_t bitVal );
+void     gpioSetPinValue ( uint32_t portNum, uint32_t bitPosi, uint32_t bitVal );
 void     gpioSetDir ( uint32_t portNum, uint32_t bitPosi, uint32_t dir );
 void     gpioSetFn(uint32_t portNum, uint32_t bitPosi, uint32_t fn);
 
