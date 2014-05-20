@@ -284,7 +284,7 @@ extern "C" {
 //      #define CFG_LIB_USB_MSC
        #define CFG_LIB_USB_CUSTOM_CLASS
 
-//      #define CFG_LIB_USB_HID_KEYBOARD
+      #define CFG_LIB_USB_HID_KEYBOARD
 //      #define CFG_LIB_USB_HID_MOUSE
 //      #define CFG_LIB_USB_HID_GENERIC
 //      #define CFG_LIB_USB_HID_GENERIC_REPORT_SIZE (64)
