@@ -569,6 +569,7 @@ void gpioSetDir( uint32_t portNum, uint32_t bitPosi, uint32_t dir )
                 Pin function (0x00..0x03, depends on port/pin combination)
 */
 /**************************************************************************/
+// TODO: handle all the special cases where IOCON word has bits other than FUNC (bits 0:2)
 void gpioSetFn(uint32_t portNum, uint32_t bitPosi, uint32_t fn)
 {
   if(portNum == 0 && bitPosi > 23)
