@@ -64,7 +64,7 @@ extern "C" {
     -----------------------------------------------------------------------*/
     #define CFG_LIB_CODEBASE_VERSION_MAJOR      (0)
     #define CFG_LIB_CODEBASE_VERSION_MINOR      (9)
-    #define CFG_LIB_CODEBASE_VERSION_REVISION   (2)
+    #define CFG_LIB_CODEBASE_VERSION_REVISION   (3)
 /*=========================================================================*/
 
 /*=========================================================================
@@ -189,6 +189,7 @@ extern "C" {
     CFG_LIB_SSP_SCK1_LOCATION     The location of the SCK pin for SSP1
 
     -----------------------------------------------------------------------*/
+/*
     #define CFG_LIB_SSP_SCK0_0_6            (6)     // Used by USBConnect
     #define CFG_LIB_SSP_SCK0_0_10           (10)    // Used by SWD
     #define CFG_LIB_SSP_SCK0_1_29           (29)
@@ -208,9 +209,10 @@ extern "C" {
 
     // Set the phase and polarity for SSP0 and SSP1
     #define CFG_LIB_SSP_CPOL0               (0)
-    #define CFG_LIB_SSP_CPHA0               (1)   /* CC3000 = Mode 1 */
+    #define CFG_LIB_SSP_CPHA0               (1)   // CC3000 = Mode 1
     #define CFG_LIB_SSP_CPOL1               (0)
     #define CFG_LIB_SSP_CPHA1               (0)
+*/
 /*=========================================================================*/
 
 
