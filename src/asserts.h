@@ -77,7 +77,7 @@ extern "C" {
 #define ASSERT_MESSAGE(condition, returnValue, message) \
         do{\
           if (!(condition)) {\
-            _PRINTF("Assert: %s at line %d: %s%s", ASSERT_FUNC, ASSERT_LINE, message, CFG_LIB_PRINTF_NEWLINE);\
+            _PRINTF("Assert: %s at line %d: %s\n", ASSERT_FUNC, ASSERT_LINE, message);\
             return (returnValue);\
           }\
         }while(0)
@@ -118,7 +118,7 @@ extern "C" {
         do{\
           error_t status = (sts);\
           if (ERROR_NONE != status) {\
-            _PRINTF("Assert: %s at line %d: 0x%X %s%s", ASSERT_FUNC, ASSERT_LINE, (uint32_t) status, message, CFG_LIB_PRINTF_NEWLINE);\
+            _PRINTF("Assert: %s at line %d: 0x%X %s\n", ASSERT_FUNC, ASSERT_LINE, (uint32_t) status, message);\
             return status;\
           }\
         } while(0)

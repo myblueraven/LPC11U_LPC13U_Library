@@ -47,18 +47,18 @@ void debugDumpNVICPriorities(void)
   uint32_t i = 0;
 
   #if defined CFG_LIB_MCU_FAMILY_LPC11UXX
-    printf("IRQ  Priority%s", CFG_LIB_PRINTF_NEWLINE);
-    printf("---  --------%s", CFG_LIB_PRINTF_NEWLINE);
+    printf("IRQ  Priority\n");
+    printf("---  --------\n");
     for (i = 0; i < 32; i++)
     {
-      printf("%3u: %u %s", (unsigned int)i, (unsigned int)NVIC_GetPriority(i), CFG_LIB_PRINTF_NEWLINE);
+      printf("%3u: %u \n", (unsigned int)i, (unsigned int)NVIC_GetPriority(i));
     }
   #elif defined CFG_LIB_MCU_FAMILY_LPC13UXX
-    printf("IRQ  Priority%s", CFG_LIB_PRINTF_NEWLINE);
-    printf("---  --------%s", CFG_LIB_PRINTF_NEWLINE);
+    printf("IRQ  Priority\n");
+    printf("---  --------\n");
     for (i = 0; i < 32; i++)
     {
-      printf("%3u: %u %s", (unsigned int)i, (unsigned int)NVIC_GetPriority(i), CFG_LIB_PRINTF_NEWLINE);
+      printf("%3u: %u \n", (unsigned int)i, (unsigned int)NVIC_GetPriority(i));
     }
   #else
     #error "debug.c: No MCU defined"

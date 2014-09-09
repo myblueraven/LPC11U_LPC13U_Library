@@ -630,6 +630,25 @@ signed int fprintf(FILE * stream, const char *pFormat, ...)
     return result;
 }
 
+#ifdef CFG_LIB_PRINTF_USBCDC
+signed int printf(const char *pFormat, ...)
+{
+    va_list ap;
+    signed int result;
+
+    va_start(ap, pFormat);
+    result = fprintf(CFG_LIB_STDIO_USBCDC, pFormat, ap);
+    va_end(ap);
+
+    return result;
+}
+#else
+#ifdef CFG_LIB_PRINTF_UART
+		signed int printf(args...) fprintf(CFG_LIB_STDIO_UART, args...)
+#else
+		signed int printf(args...)
+#endif
+#endif
 
 //------------------------------------------------------------------------------
 /// Writes a formatted string inside another string.

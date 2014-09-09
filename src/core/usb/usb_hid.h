@@ -89,7 +89,7 @@ ErrorCode_t usb_hid_generic_send(uint8_t const* p_report_in, uint32_t length);
                 // Display incoming HID data with CDC using printf
                 printf("%02x ", hid_out_report.report[i]);
               }
-              printf(CFG_LIB_PRINTF_NEWLINE);
+              printf("\n");
               is_received_report = false;
             }
           }

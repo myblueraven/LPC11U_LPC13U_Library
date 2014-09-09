@@ -72,7 +72,7 @@ extern USBD_HANDLE_T g_hUsb;
         do{\
           ErrorCode_t status = (sts);\
           if (LPC_OK != status) {\
-            _PRINTF("Assert: '%s' at line %d: 0x%X %s%s", __func__, __LINE__, (uint32_t) status, message, CFG_LIB_PRINTF_NEWLINE);\
+            _PRINTF("Assert: '%s' at line %d: 0x%X %s\n", __func__, __LINE__, (uint32_t) status, message);\
             return status;\
           }\
         }while(0)

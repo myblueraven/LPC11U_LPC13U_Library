@@ -76,17 +76,17 @@
                     parameters if values like %s, %d are used.
 
     @code
-    LOG("HID In report" CFG_LIB_PRINTF_NEWLINE
-        "\tStatus   = %d - %s" CFG_LIB_PRINTF_NEWLINE
-        "\tCount    = %d" CFG_LIB_PRINTF_NEWLINE
-        "\tSequence = %d",
+    LOG("HID In report\n"
+        "\tStatus   = %d - %s\n"
+        "\tCount    = %d\n"
+        "\tSequence = %d\n",
         in_report->Status, REPORT_STATUS_STR(in_report->Status), in_report->Count, in_report->Sequence);
     LOG_TAB(1);
     LOG_ARR(in_report->ReadData, 15, "%08X");
     @endcode
 */
 /**************************************************************************/
-#define LOG(format, ...) LOG_PRINTF(LOG_MESSAGE format "%s", LOG_FUNC, LOG_LINE, __VA_ARGS__, CFG_LIB_PRINTF_NEWLINE);
+#define LOG(format, ...) LOG_PRINTF(LOG_MESSAGE format "\n", LOG_FUNC, LOG_LINE, __VA_ARGS__);
 
 /**************************************************************************/
 /*!
@@ -106,7 +106,7 @@
   do{\
     for(uint32_t run=0; run<(size); run++)\
       LOG_PRINTF(format " ", (array)[run]);\
-    LOG_PRINTF(CFG_LIB_PRINTF_NEWLINE);\
+    LOG_PRINTF("\n");\
   } while(0)
 
 #define LOG_STR(str) LOG("%s", str)
