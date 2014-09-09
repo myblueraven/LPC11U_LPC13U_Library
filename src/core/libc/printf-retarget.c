@@ -36,6 +36,7 @@
 #include <stdarg.h>
 
 #include "libconfig.h"
+#include "libio.h"
 
 #ifdef __CROSSWORKS_ARM
   #if defined(CFG_LIB_PRINTF_DEBUG) || defined(CFG_LIB_PRINTF_USBCDC)
@@ -47,9 +48,7 @@
   #include "core/usb/usbd.h"
 #endif
 
-#ifdef CFG_LIB_PRINTF_UART
-  #include "core/uart/uart.h"
-#endif
+#include "core/uart/uart.h"
 
 /**************************************************************************/
 /*!
@@ -59,9 +58,10 @@
             Byte value to send
 */
 /**************************************************************************/
-void __putchar(const char c)
+//void __putchar(const char c){}
+void __putchar_usb(const char c)
 {
-  #if defined(CFG_LIB_USB) && defined(CFG_LIB_PRINTF_USBCDC)
+  #if defined(CFG_LIB_USB_CDC)
     if (usb_isConfigured())
     {
       while(usb_cdc_isConnected() && !usb_cdc_putc(c) ) // blocking
@@ -70,11 +70,13 @@ void __putchar(const char c)
       }
     }
   #endif
-
-  #ifdef CFG_LIB_PRINTF_UART
+}
+void __putchar_uart(const char c)
+{
     uartSendByte(c);
-  #endif
-
+}
+void __putchar_debug(const char c)
+{
   /* Handle PRINTF_DEBUG redirection for Crossworks for ARM */
   #ifdef __CROSSWORKS_ARM
     #ifdef CFG_LIB_PRINTF_DEBUG
@@ -102,11 +104,43 @@ void __putchar(const char c)
             Byte value to send
 */
 /**************************************************************************/
-int puts(const char * str)
+//int puts(const char * str)
+//{
+//  while(*str) __putchar(*str++);
+//
+//  return 0;
+//}
+//
+int fputs (const char * str, FILE * stream)
 {
-  while(*str) __putchar(*str++);
+	if(stream == LIB_STDIO_USBCDC)
+	{
+		while(*str)
+		{
+#ifdef CFG_LIB_PRINTF_NEWLINE
+			if(*str == '\n')
+			__putchar_usb('\r');
+#endif
+			__putchar_usb(*str++);
+		}
+	}
+	else if(stream == LIB_STDIO_UART0)
+	{
+		while(*str)
+		{
+#ifdef CFG_LIB_PRINTF_NEWLINE
+			if(*str == '\n')
+			__putchar_uart('\r');
+#endif
+			__putchar_uart(*str++);
+		}
+	}
+	else
+	{
+		return -1;
+	}
 
-  return 0;
+	return 0;
 }
 
 #ifdef __CC_ARM // keil

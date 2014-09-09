@@ -40,6 +40,8 @@
 #ifndef _ASSERTS_H_
 #define _ASSERTS_H_
 
+#include "libio.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

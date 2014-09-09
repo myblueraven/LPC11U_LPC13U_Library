@@ -41,6 +41,7 @@
 #include <stdint.h>
 
 #include "libconfig.h" // For CFG_LIB_PRINTF_MAXSTRINGSIZE
+#include "libio.h"
 
 //------------------------------------------------------------------------------
 //         Global Variables
@@ -596,7 +597,7 @@ signed int vsprintf(char *pString, const char *pFormat, va_list ap)
 /// \param pFormat  Format string
 /// \param ap  Argument list.
 //------------------------------------------------------------------------------
-signed int vprintf(const char *pFormat, va_list ap)
+signed int vfprintf(FILE * stream, const char *pFormat, va_list ap)
 {
   char pStr[CFG_LIB_PRINTF_MAXSTRINGSIZE];
   char pError[] = "stdio.c: increase CFG_LIB_PRINTF_MAXSTRINGSIZE\r\n";
@@ -604,12 +605,12 @@ signed int vprintf(const char *pFormat, va_list ap)
   // Write formatted string in buffer
   if (vsprintf(pStr, pFormat, ap) >= CFG_LIB_PRINTF_MAXSTRINGSIZE) {
 
-    puts(pError);
+    fputs(pError, stream);
     while (1); // Increase CFG_LIB_PRINTF_MAXSTRINGSIZE
   }
 
   // Display string
-  return puts(pStr);
+  return fputs(pStr, stream);
 }
 
 //------------------------------------------------------------------------------
@@ -617,14 +618,13 @@ signed int vprintf(const char *pFormat, va_list ap)
 /// arguments.
 /// \param pFormat  Format string.
 //------------------------------------------------------------------------------
-signed int printf(const char *pFormat, ...)
+signed int fprintf(FILE * stream, const char *pFormat, ...)
 {
     va_list ap;
     signed int result;
 
-    // Forward call to vprintf
     va_start(ap, pFormat);
-    result = vprintf(pFormat, ap);
+    result = vfprintf(stream, pFormat, ap);
     va_end(ap);
 
     return result;

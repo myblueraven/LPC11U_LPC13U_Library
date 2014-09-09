@@ -238,9 +238,9 @@ ErrorCode_t HID_EpOut_Hdlr (USBD_HANDLE_T hUsb, void* data, uint32_t event)
 {
   if (USB_EVT_OUT == event)
   {
+#ifdef CFG_LIB_USB_HID_GENERIC
     USB_HID_CTRL_T* pHidCtrl = (USB_HID_CTRL_T*)data;
 
-#ifdef CFG_LIB_USB_HID_GENERIC
     if (pHidCtrl->epout_adr == HID_GENERIC_EP_OUT)
     {
       uint8_t out_report[CFG_LIB_USB_HID_GENERIC_REPORT_SIZE];
