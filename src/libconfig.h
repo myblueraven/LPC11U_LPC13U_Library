@@ -311,10 +311,6 @@ extern "C" {
     enabled at the same time, etc.
 
     -----------------------------------------------------------------------*/
-    #if defined(CFG_LIB_INTERFACE) && !( defined CFG_LIB_PRINTF_UART || defined CFG_LIB_PRINTF_USBCDC || defined CFG_LIB_PRINTF_DEBUG)
-      #error "At least one CFG_LIB_PRINTF target must be defined with CFG_LIB_INTERFACE"
-    #endif
-
     #if defined(CFG_LIB_PRINTF_USBCDC) && !defined(CFG_LIB_USB_CDC)
       #error "CFG_LIB_USB_CDC must be defined with CFG_LIB_PRINTF_USBCDC"
     #endif
