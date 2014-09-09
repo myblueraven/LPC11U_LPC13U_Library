@@ -225,8 +225,9 @@ extern "C" {
                               redirected to UART
     CFG_LIB_PRINTF_USBCDC         Will cause all printf statements to be
                               redirect to USB Serial
-    CFG_LIB_PRINTF_NEWLINE        Translates "\n" into "\r\n" before sending
-                              to output
+    CFG_LIB_PRINTF_CONVERT_NEWLINE_*
+                                  Translates "\n" into "\r\n" before sending
+                              to output on UART or USBCDC
 
     Note: If no printf redirection definitions are present, all printf
     output will be ignored.
@@ -237,7 +238,8 @@ extern "C" {
     #define CFG_LIB_PRINTF_USBCDC
     // #define CFG_LIB_PRINTF_DEBUG
 
-    #define CFG_LIB_PRINTF_NEWLINE
+    #define CFG_LIB_PRINTF_CONVERT_NEWLINE_USBCDC
+    #define CFG_LIB_PRINTF_CONVERT_NEWLINE_UART
 /*=========================================================================*/
 
 /*=========================================================================

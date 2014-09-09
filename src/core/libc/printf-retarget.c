@@ -113,22 +113,22 @@ void __putchar_debug(const char c)
 //
 int fputs (const char * str, FILE * stream)
 {
-	if(stream == LIB_STDIO_USBCDC)
+	if(stream == CFG_LIB_STDIO_USBCDC)
 	{
 		while(*str)
 		{
-#ifdef CFG_LIB_PRINTF_NEWLINE
+#ifdef CFG_LIB_PRINTF_CONVERT_NEWLINE_USBCDC
 			if(*str == '\n')
 			__putchar_usb('\r');
 #endif
 			__putchar_usb(*str++);
 		}
 	}
-	else if(stream == LIB_STDIO_UART0)
+	else if(stream == CFG_LIB_STDIO_UART)
 	{
 		while(*str)
 		{
-#ifdef CFG_LIB_PRINTF_NEWLINE
+#ifdef CFG_LIB_PRINTF_CONVERT_NEWLINE_UART
 			if(*str == '\n')
 			__putchar_uart('\r');
 #endif

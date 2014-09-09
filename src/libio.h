@@ -12,15 +12,14 @@
 
 #include "libconfig.h"
 
-#define LIB_STDIO_USBCDC   (FILE *)(0x40)
-#define LIB_STDIO_UART0    (FILE *)(0x41)
-#define LIB_STDIO_UART1    (FILE *)(0x42)
+#define CFG_LIB_STDIO_USBCDC   (FILE *)(0x40)
+#define CFG_LIB_STDIO_UART     (FILE *)(0x41)
 
 #ifdef CFG_LIB_PRINTF_USBCDC
-#define printf(args...) fprintf(LIB_STDIO_USBCDC, args...)
+#define printf(args...) fprintf(CFG_LIB_STDIO_USBCDC, args...)
 #else
 #ifdef CFG_LIB_PRINTF_UART
-#define printf(args...) fprintf(LIB_STDIO_UART0, args...)
+#define printf(args...) fprintf(CFG_LIB_STDIO_UART, args...)
 #else
 #define printf(args...)
 #endif
