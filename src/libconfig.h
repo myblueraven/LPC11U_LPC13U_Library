@@ -64,7 +64,7 @@ extern "C" {
     -----------------------------------------------------------------------*/
     #define CFG_LIB_CODEBASE_VERSION_MAJOR      (0)
     #define CFG_LIB_CODEBASE_VERSION_MINOR      (9)
-    #define CFG_LIB_CODEBASE_VERSION_REVISION   (4)
+    #define CFG_LIB_CODEBASE_VERSION_REVISION   (5)
 /*=========================================================================*/
 
 /*=========================================================================
